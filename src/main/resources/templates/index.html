@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kids</title>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+	<style type="text/css">
+		.image {
+    		max-height:50px;
+    		height: auto;
+		}
+	</style>
+	
+	<!-- Javascript -->
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	
+</head>
+<body>
+	<div class="container">
+		<div>
+			<h1 class="display-4"><img class="image" th:src="@{img/logo_connect.png}"/> IGREJA RECOMEÇAR KIDS</h1>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <div class="container-fluid">
+		    <a class="navbar-brand" href="#">Menu</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarCollapse">
+			      <div class="navbar-nav">
+			        <a class="nav-link active" aria-current="page" href="/home">Início</a>
+			        <!-- <a class="nav-link" href="/user/index">User</a> -->
+			        <a class="nav-link" href="/connect/index">Kids</a>
+			        <a class="nav-link" href="/worship/index">Cultos</a>
+			        <!--<a class="nav-link" href="/voluntario/index">Voluntários</a>-->
+			        <!--<a class="nav-link" href="/ministerio/index">Ministérios</a>-->
+			        <!--<a class="nav-link" href="/escala/index">Escalas</a>-->
+			      </div>
+			    </div>
+			  </div>
+			</nav>
+			<hr class="my-4">
+			<p class="lead">Olá, bem-vindo ao Kids Igreja Recomeçar.</p>
+<!-- 			<div class="card"> -->
+<!-- 				<h4 class="card-header">User</h4> -->
+<!-- 				<div class="card-body"> -->
+<!-- 					<h5 class="card-title">User registration</h5> -->
+<!-- 					<p class="card-text">Insert, change or delete a system user.</p> -->
+<!-- 					<a href="/user/index" class="btn btn-primary">Enter</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			<br>
+			<div class="card">
+				<h4 class="card-header">Kids</h4>
+				<div class="card-body">
+					<h5 class="card-title">Cadastro de Crianças</h5>
+					<p class="card-text">Listar, cadastrar, editar ou deletar crianças.</p>
+					<a href="/connect/index" class="btn btn-primary">Acessar</a>
+			  	</div>
+			</div>
+			<br>
+			<div class="card">
+				<h4 class="card-header">Cultos</h4>
+				<div class="card-body">
+					<h5 class="card-title">Gestão de Cultos</h5>
+			    	<p class="card-text">Inserir os Kids em um determinado culto.</p>
+			    	<a href="/worship/index" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+			<br>
+<!-- 			<div class="card"> -->
+<!-- 				<h4 class="card-header">Voluntários</h4> -->
+<!-- 				<div class="card-body"> -->
+<!-- 					<h5 class="card-title">Gestão de Voluntários</h5> -->
+<!-- 			    	<p class="card-text">Listar, cadastrar, editar e deletar voluntários do connect</p> -->
+<!-- 			    	<a href="/voluntario/index" class="btn btn-primary">Acessar</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<br> -->
+<!-- 			<div class="card"> -->
+<!-- 				<h4 class="card-header">Ministerios</h4> -->
+<!-- 				<div class="card-body"> -->
+<!-- 					<h5 class="card-title">Gestão de Ministerios</h5> -->
+<!-- 			    	<p class="card-text">Listar, cadastrar, editar e deletar ministerios do connect</p> -->
+<!-- 			    	<a href="/ministerio/index" class="btn btn-primary">Acessar</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<br> -->
+<!-- 			<div class="card"> -->
+<!-- 				<h4 class="card-header">Escalas</h4> -->
+<!-- 				<div class="card-body"> -->
+<!-- 					<h5 class="card-title">Gestão de Escalas</h5> -->
+<!-- 			    	<p class="card-text">Listar, cadastrar, editar e deletar escalas do Kids</p> -->
+<!-- 			    	<a href="/escala/index" class="btn btn-primary">Acessar</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+		</div>
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

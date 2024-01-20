@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kids</title>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+	<style type="text/css">
+		.image {
+    		max-height:50px;
+    		height: auto;
+		}
+	</style>
+	
+	<!-- Javascript -->
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/plug-ins/1.12.1/filtering/type-based/accent-neutralise.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function(){
+			$('#connects').DataTable();
+			$('#phone').mask('(00) 00000-0000');
+		    $('#date').mask('00/00/0000');
+		    $('#hour').mask('00:00');
+		});
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<h1 class="display-4"><img class="image" th:src="@{../../img/logo_connect.png}"/> IGREJA RECOMEÇAR KIDS</h1>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <div class="container-fluid">
+		    <a class="navbar-brand" href="#">Menu</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarCollapse">
+			      <div class="navbar-nav">
+			        <a class="nav-link" aria-current="page" href="/home">Início</a>
+			        <!-- <a class="nav-link" href="/user/index">User</a> -->
+			        <a class="nav-link" href="/connect/index">Kids</a>
+			        <a class="nav-link active" href="/worship/index">Cultos</a>
+			        <!--<a class="nav-link" href="/voluntario/index">Voluntários</a>-->
+			        <!--<a class="nav-link" href="/ministerio/index">Ministérios</a>-->
+			        <!--<a class="nav-link" href="/escala/index">Escalas</a>-->
+			      </div>
+			    </div>
+			  </div>
+			</nav>
+	<hr class="my-4">
+	<p class="lead">Adicionar Kids ao Culto</p>
+	<a class="btn btn-danger" th:href="@{/worship/details/{id}(id=${worship.id})}">Voltar</a>
+	<br>
+	<br>
+	<h5 th:text="|Data: ${worship.date}|"></h5>
+	<h5 th:text="|Hora: ${worship.hour}|"></h5>
+	<h5 th:text="|Status: ${worship.status}|"></h5>
+	<table id="connects" class="table table-striped" style="width:100%">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Data de Nascimento</th>
+					<th>Responsável</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="connect : ${connects}">
+					<td th:text="${connect.name}"></td>
+					<td th:text="${connect.birthDate}"></td>
+					<td th:text="${connect.responsible}"></td>
+					<td><a class="btn btn-success btn-sm" th:href="@{/worship/{idCultos}/add-connect/{idConnect}(idCultos=${worship.id},idConnect=${connect.id})}">Adicionar ao Culto</a></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

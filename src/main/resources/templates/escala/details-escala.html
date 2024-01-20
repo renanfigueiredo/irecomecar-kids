@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kids</title>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+	<style type="text/css">
+		.image {
+    		max-height:50px;
+    		height: auto;
+		}
+	</style>
+	
+	<!-- Javascript -->
+	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=examples%2Fstyling%2Fbootstrap5.html" async></script>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/plug-ins/1.12.1/sorting/date-uk.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/plug-ins/1.12.1/filtering/type-based/accent-neutralise.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function(){
+			$('#connect-bracelet').DataTable(
+					{
+						"aoColumns": [
+							null,
+							null,
+				            null,
+				            null
+				        ],
+				        language: {
+				            url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json'
+				        }
+					}					
+			);
+		    $('#phone').mask('(00) 00000-0000');
+		    $('#date').mask('00/00/0000');
+		    $('#hour').mask('00:00');
+		});
+	</script>
+	<style>
+		.pendente{
+			color: #ffc107;
+			font-weight: bolder;
+			}
+		.confirmado{
+			color: #146c43;
+			font-weight: bolder;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="display-4"><img class="image" th:src="@{../../img/logo_connect.png}"/> IGREJA RECOMEÇAR KIDS</h1>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <div class="container-fluid">
+		    <a class="navbar-brand" href="#">Menu</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarCollapse">
+			      <div class="navbar-nav">
+			        <a class="nav-link" aria-current="page" href="/home">Início</a>
+			        <!-- <a class="nav-link" href="/user/index">User</a> -->
+			        <a class="nav-link" href="/connect/index">Kids</a>
+			        <a class="nav-link" href="/worship/index">Cultos</a>
+			        <!--<a class="nav-link" href="/voluntario/index">Voluntários</a>-->
+			        <!--<a class="nav-link" href="/ministerio/index">Ministérios</a>-->
+			        <a class="nav-link active" href="/escala/index">Escalas</a>
+			      </div>
+			    </div>
+			  </div>
+		</nav>
+		<hr class="my-4">
+		<p class="lead">Gestão de Escala</p>
+		<h5 th:text="|Data: ${escalaIndex.culto.date}|"></h5>
+		<h5 th:text="|Hora: ${escalaIndex.culto.hour}|"></h5>
+		<hr class="my-4">
+		<a class="btn btn-success" th:href="@{/escala/{id}/list-voluntarios(id=${escala.id})}">Adicionar Voluntário Cadastrado</a>
+		<a class="btn btn-warning" th:href="@{/escala/{id}/add-voluntario-sem-cadastro(id=${escala.id})}">Adicionar Voluntário sem cadastro</a>
+		<a class="btn btn-danger" th:href="@{/escala/index}">Voltar</a>
+		<br>
+		<br>
+		<table id="connect-bracelet" class="table table-striped" style="width:100%">
+			<thead>
+				<tr>
+					<th>Voluntário</th>
+					<th>Ministério</th>
+					<th>Presença</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="voluntarios : ${escala.escalaVoluntarioList}">
+					<td th:text="${voluntarios.voluntario.name}"></td>
+					<td th:text="${voluntarios.ministerio.name}"></td>
+					<td class="pendente" style="color: #ffc107;" th:if="${voluntarios.checkin == false}">PENDENTE</td>
+					<td class="confirmado" style="color: #146c43;" th:if="${voluntarios.checkin == true}">CONFIRMADO</td>
+					<td>
+						<a class="btn btn-success btn-sm" th:if="${voluntarios.checkin == false}" th:href="@{/escala/fazerCheckin/{idEscala}/{idVoluntario}(idEscala=${escala.id},idVoluntario=${voluntarios.voluntario.id})}">Fazer Check-in</a>
+						<a class="btn btn-warning btn-sm" th:if="${voluntarios.checkin == true}" th:href="@{/escala/removerCheckin/{idEscala}/{idVoluntario}(idEscala=${escala.id},idVoluntario=${voluntarios.voluntario.id})}">Desfazer Check-in</a>
+						<a class="btn btn-danger btn-sm" th:href="@{/escala/voluntario/delete/{idEscala}/{idVoluntario}(idEscala=${escala.id},idVoluntario=${voluntarios.voluntario.id})}">Remover da Escala</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
